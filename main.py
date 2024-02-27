@@ -8,7 +8,7 @@ cur = conn.cursor()
 
 # Create Table if none exists
 cur.execute("""CREATE TABLE IF NOT EXISTS recorder(
-            recorder_id INT PRIMARY KEY,
+            recorder_id INT PRIMARY_KEY,
             month INT,
             day INT,
             year INT,
@@ -63,8 +63,8 @@ def add():
         afton = input("Do you work Afton Alps this afternoon? If so, then when will you leave? ")
 
         # Take the user input and add it to the database
-        cur.execute("""INSERT INTO recorder(month, day, year, hours, aldi, afton)
-                    VALUES (month, day, year, time, aldi, afton)
+        cur.execute(f"""INSERT INTO recorder(recorder_id, month, day, year, hours, aldi, afton)
+                    VALUES ({id}, {month}, {day}, {year}, {time}, {aldi}, {afton})
 
         """)
         conn.commit()
