@@ -18,61 +18,66 @@ cur.execute("""CREATE TABLE IF NOT EXISTS recorder(
 """)
 
 conn.commit()
-
-# Class for adding a new entry into the database
-#   Default Constructor
-#   User Constructor
-#   List, retrieve, edit, and delete functions
-#   Function to input 
-class Entry():
-    def __init__(self, id, month, day, year, time, notes):
-        self.id = id
-        self.month = month
-        self.day = day
-        self.year = year
-        self.time = time
-        self.notes = notes
-
-    def add(self):
-        print("ADD")
-
-        # Have the user input their time log information into the system
-        self.id = int(input("Recorder ID: "))
-        self.month = int(input("Month: "))
-        self.day = int(input("Day: "))
-        self.year = int(input("Year: "))
-        self.time = int(input("Amount of time spent programming: "))
-
-        # Take the user input and add it to the database
-        cur.execute(f"""INSERT INTO recorder(recorder_id, month, day, year, time, notes)
-                    VALUES ({self.id}, {self.month}, {self.day}, {self.year}, {self.time}, {self.notes})
-
-""")
         
 # Add function
 def add():
-        print("ADD")
+        print("""
+          
+          
+          ADD
+          
+          
+          """)
 
         # Have the user input their time log information into the system
         id = int(input("Recorder ID: "))
-        month = int(input("Month: "))
-        day = int(input("Day: "))
-        year = int(input("Year: "))
-        time = int(input("Amount of time spent programming (in hours): "))
-        aldi = input("Did you work at Aldi? If so, till when? ")
-        afton = input("Do you work Afton Alps this afternoon? If so, then when will you leave? ")
+        monthDate = int(input("Month: "))
+        dayDate = int(input("Day: "))
+        yearDate = int(input("Year: "))
+        time = float(input("Amount of time spent programming (in hours): "))
+        aldiWorked = input("Did you work at Aldi? If so, till when? ")
+        aftonWorked = input("Do you work Afton Alps this afternoon? If so, then when will you leave? ")
 
         # Take the user input and add it to the database
         cur.execute(f"""INSERT INTO recorder(recorder_id, month, day, year, hours, aldi, afton)
-                    VALUES ({id}, {month}, {day}, {year}, {time}, {aldi}, {afton})
+                    VALUES ({id}, {monthDate}, {dayDate}, {yearDate}, {time}, "{aldiWorked}", "{aftonWorked}");
 
         """)
         conn.commit()
     
 
-# Function to show record entry page
+# View function
+def view():
+    print("""
+          
+          
+          VIEW
+          
+          
+          """)
 
-# Function to show database, maybe only last 10-20 entries
+    # Query database for it to display all recorded entries
+    print(cur.execute("SELECT * FROM recorder;").fetchall())
+
+# Edit function
+def edit():
+    print("""
+          
+          
+          EDIT
+          
+          
+          """)
+
+# Delete function
+def delete():
+    print("""
+          
+          
+          Delete
+          
+          
+          """)
 
 # Menu function
 def menu():
@@ -99,8 +104,16 @@ def main():
     while (entry != -99):
         if (entry == 1):
             add()
+        elif (entry == 2):
+            view()
+        elif (entry == 3):
+            edit()
+        elif (entry == 4):
+            delete()
         elif (entry == -99):
             break
+        else:
+            print("Wrong entry, please try again")
         
         entry = menu()
     
