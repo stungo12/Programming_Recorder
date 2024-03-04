@@ -136,6 +136,7 @@ def delete():
     cur.execute(f"""DELETE FROM recorder WHERE recorder_id = {deleteEntry};
 
 """)
+    conn.commit()
 
 # Menu function
 def menu():
