@@ -16,4 +16,5 @@ Here is a list of things that I would like to add to improve this project:
 * Add an Edit function. There's a menu option for it, but it currently doesn't work as it wasn't necessary and would have taken more time and thought then what I wanted to put in for the time being
 * Graphs and charts to make the information more understandable. I wanted a way to measure how much time I'm spending on programming over a period of time and get a better idea on why I might be slacking
 * Create a function to automatically add in the Recorder_ID
+
 Please feel free to let me know if there are any other functionalities that you think should be added or work on one of the to-dos above
